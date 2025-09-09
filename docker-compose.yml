@@ -2,7 +2,7 @@ services:
   web:
     image: php:8.2-apache
     # penser à changer le nom du !!!! container !!!!
-    container_name: php-apache-gallery
+    container_name: php-apache-sql_leboncoin
     build:
       context: .
       dockerfile: Dockerfile
