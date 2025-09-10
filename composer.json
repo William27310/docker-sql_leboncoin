@@ -1,0 +1,15 @@
+{
+    "name": "stagiaire/docker-sql_leboncoin",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "William",
+            "email": "william.27@free.fr"
+        }
+    ],
+    "require": {}
+}
