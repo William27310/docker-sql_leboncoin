@@ -40,34 +40,66 @@
 
     <main>
         <div class="container mt-5 bg-dark-subtle p-5 rounded">
-            <form class="row g-3">
+            <form class="row g-3" action="index.php?url=register" method="post" novalidate>
                 <h1>Création de compte</h1>
+
+                <!-- nom d'utilisateur -->
                 <div class="col-6">
-                    <label for="inputAddress" class="form-label">Pseudo</label>
-                    <input type="text" class="form-control" id="inputAddress">
+                    <p class="fst-italic text-secondary">*Obligatoire</p>
+                    <div class="d-flex justify-content-between">
+                        <label for="inputAddress" class="form-label">Nom d'utilisateur</label>
+                        <span class="text-danger"><?= $errors['pseudo'] ?? "" ?></span>
+                    </div>
+                    <input type="text" class="form-control" id="inputAddress" name="pseudo" value="<?= $_POST['pseudo'] ?? "" ?>">
                 </div>
+
+                <!-- email -->
                 <div class="col-md-6">
-                    <label for="inputEmail4" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="inputEmail4">
+                    <p class="fst-italic text-secondary">*Obligatoire</p>
+                    <div class="d-flex justify-content-between">
+                        <label for="inputEmail4" class="form-label">Email</label>
+                        <span class="text-danger"><?= $errors['email'] ?? "" ?></span>
+                    </div>
+                    <input type="email" class="form-control" id="inputEmail4" name="email" value="<?= $_POST['email'] ?? "" ?>">
                 </div>
+
+                <!-- mot de passe -->
                 <div class="col-md-6">
-                    <label for="inputPassword4" class="form-label">Mot de passe</label>
-                    <input type="motdepasse" class="form-control" id="inputPassword4">
+                    <p class="fst-italic text-secondary">*Obligatoire</p>
+                    <div class="d-flex justify-content-between">
+                        <label for="inputPassword4" class="form-label">Mot de passe</label>
+                        <span class="text-danger"><?= $errors['motdepasse'] ?? "" ?></span>
+                    </div>
+                    <input type="password" class="form-control" id="inputPassword4" name="motdepasse" value="<?= $_POST['motdepasse'] ?? "" ?>">
                 </div>
+
+                <!-- mot de passe (2) -->
                 <div class="col-md-6">
-                    <label for="inputPassword4" class="form-label">Confirmation du Mot de passe</label>
-                    <input type="motdepasse" class="form-control" id="inputPassword4">
+                    <p class="fst-italic text-secondary">*Obligatoire</p>
+                    <div class="d-flex justify-content-between">
+                        <label for="inputPassword4" class="form-label">Confirmation du Mot de passe</label>
+                        <span class="text-danger"><?= $errors['motdepasse(2)'] ?? "" ?></span>
+                    </div>
+                    <input type="password" class="form-control" id="inputPassword4" name="motdepasse(2)" value="<?= $_POST['motdepasse(2)'] ?? "" ?>">
                 </div>
+
+                <!-- Conditions d'utilisations -->
                 <div class="col-12">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="gridCheck">
+                        <input class="form-check-input" type="checkbox" id="gridCheck" name="cgu" value="<?= $_POST['cgu'] ?? "" ?>">
                         <label class="form-check-label" for="gridCheck">
                             Accepter les conditions d'utilisations !
                         </label>
+                        <div>
+                            <p class="fst-italic text-secondary">*Obligatoire</p>
+
+                            <span class="text-danger"><?= $errors['cgu'] ?? "" ?></span>
+                        </div>
                     </div>
                 </div>
+
                 <div class="col-12">
-                    <button type="submit" class="btn border border-dark">Se connecter</button>
+                    <button type="submit" class="btn border border-dark">S'inscrire</button>
                 </div>
             </form>
         </div>

@@ -46,6 +46,10 @@
                 <p><span class="fw-bold">Mail :</span> enzo.27@hotmail.com</p>
                 <p><span class="fw-bold">Pseudo :</span> zozo</p>
 
+                <div class="col-12 mb-4">
+                    <button type="submit" class="btn border border-dark">Se déconnecter</button>
+                </div>
+
                 <h4 class="fs-2 mb-3">Mes annonces</h4>
 
                 <div class="d-flex justify-content-around">

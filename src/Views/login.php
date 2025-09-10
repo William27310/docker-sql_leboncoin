@@ -39,19 +39,31 @@
     </nav>
 
     <main>
-        <div class="container mt-5 bg-dark-subtle p-5 rounded">
-            <form class="row g-3">
+        <div class="container w-25 mt-5 bg-dark-subtle p-5 rounded">
+            <form class="row g-3" action="index.php?url=login" method="post">
                 <h1>Se connecter</h1>
+
+                <!-- email -->
                 <div class="col-12">
-                    <label for="inputEmail4" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="inputEmail4">
+                    <div class="d-flex justify-content-between">
+                        <label for="inputEmail4" class="form-label">Email</label>
+                        <span class="text-danger"><?= $errors['email'] ?? "" ?></span>
+                    </div>
+                    <input type="email" class="form-control" id="inputEmail4" name="email" value="<?= $_POST['email'] ?? "" ?>">
                 </div>
-                <div class="col-12">
-                    <label for="inputPassword4" class="form-label">Mot de passe</label>
-                    <input type="motdepasse" class="form-control" id="inputPassword4">
+
+                <!-- mot de passe -->
+                <div class="col-12 mb-5">
+                    <div class="d-flex justify-content-between">
+                        <label for="inputPassword4" class="form-label">Mot de passe</label>
+                        <span class="text-danger"><?= $errors['motdepasse'] ?? "" ?></span>
+                    </div>
+                    <input type="password" class="form-control" id="inputPassword4" name="motdepasse" value="<?= $_POST['motdepasse'] ?? "" ?>">
                 </div>
-                <div class="col-12">
+
+                <div class="col-12 d-flex align-items-center">
                     <button type="submit" class="btn border border-dark">Se connecter</button>
+                    <a href="index.php?url=register" class="m-0 ms-3">Pas inscrit ?</a>
                 </div>
             </form>
         </div>
