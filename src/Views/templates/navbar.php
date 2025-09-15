@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <nav class="navigateur_un d-flex align-items-center justify-content-between p-2">
+        <p class="fw-bold fs-2 m-0">
+            <a href="index.php?url=home" class="text-decoration-none text-white Titre">Le Bon Coin</a>
+        </p>
+
+        <div class="d-flex gap-2">
+            <button type="button" class="btn btn-warning"><a href="index.php?url=annonce" class="text-decoration-none text-white">Déposer une annonce</a></button>
+            <a href="index.php?url=profil" type="button" class="text-decoration-none text-white btn btn-warning d-flex flex-column align-items-center">
+                <span class="material-symbols-outlined">person</span>
+                <small>Profil</small>
+            </a>
+        </div>
+    </nav>
+
+    <nav class="bg-warning p-2">
+        <div class="d-flex justify-content-around">
+            <button type="button" class="btn bouton"><a class="text-decoration-none text-white" href="index.php?url=register">S'inscrire</a></button>
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" aria-label="Search" />
+                <button class="btn bouton text-white" type="submit">Rechercher</button>
+            </form>
+            <button type="button" class="btn bouton"><a class="text-decoration-none text-white" href="index.php?url=login">Se connecter</a></button>
+        </div>
+    </nav>
+
+</body>
+
+</html>
