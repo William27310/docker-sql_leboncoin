@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-
 use PDO;
 // Classe Php qui sert à accéder à des bases de données via une DSN
 /**

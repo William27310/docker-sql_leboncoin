@@ -12,7 +12,6 @@
 </head>
 
 <body>
-
     <nav class="navigateur_un d-flex align-items-center justify-content-between p-2">
         <p class="fw-bold fs-2 m-0">
             <a href="index.php?url=home" class="text-decoration-none text-white Titre">Le Bon Coin</a>
@@ -39,41 +38,11 @@
     </nav>
 
     <main>
-        <div class="container mt-5 bg-secondary-subtle p-5 rounded">
-            <h1 class="mb-4">Votre profil</h1>
-            <div class="row">
-                <p><span class="fw-bold">Nom :</span> Lefebvre</p>
-                <p><span class="fw-bold">Mail :</span> enzo.27@hotmail.com</p>
-                <p><span class="fw-bold">Nom d'utilisateur :</span> zozo</p>
+        <div class="container w-50 mt-5 bg-dark-subtle p-5 rounded text-center">
+            <h1 class="mb-5 mt-5">Bienvenue !</h1>
+            <h2 class="mb-5 mt-5">Vous êtes à présent connecté !</h2>
+            <p>Vous allez être redirigé dans 5 secondes. Si cela n'arrive pas, cliquez <a href="index.php?url=home">ici</a>.</p>
 
-                <div class="col-12 mb-4">
-                    <button type="submit" class="btn border border-dark">Se déconnecter</button>
-                </div>
-
-                <h4 class="fs-2 mb-3">Mes annonces</h4>
-
-                <div class="d-flex justify-content-around">
-                    <div class="card" style="width: 18rem;">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <p class="card-text">Titre</p>
-                            <p class="card-text">Prix</p>
-                            <p class="card-text">Date de publication</p>
-                            <p class="card-text">Description</p>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 18rem;">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <p class="card-text">Titre</p>
-                            <p class="card-text">Prix</p>
-                            <p class="card-text">Date de publication</p>
-                            <p class="card-text">Description</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
         </div>
     </main>
 

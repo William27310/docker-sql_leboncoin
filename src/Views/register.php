@@ -78,9 +78,9 @@
                     <p class="fst-italic text-secondary">*Obligatoire</p>
                     <div class="d-flex justify-content-between">
                         <label for="inputPassword4" class="form-label">Confirmation du Mot de passe</label>
-                        <span class="text-danger"><?= $errors['motdepasse(2)'] ?? "" ?></span>
+                        <span class="text-danger"><?= $errors['motdepasse2'] ?? "" ?></span>
                     </div>
-                    <input type="password" class="form-control" id="inputPassword4" name="motdepasse(2)" value="<?= $_POST['motdepasse(2)'] ?? "" ?>">
+                    <input type="password" class="form-control" id="inputPassword4" name="motdepasse2" value="<?= $_POST['motdepasse2'] ?? "" ?>">
                 </div>
 
                 <!-- Conditions d'utilisations -->

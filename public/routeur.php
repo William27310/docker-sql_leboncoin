@@ -36,6 +36,11 @@ switch ($parts[0]) {
         $controller = new AnnonceController();
         $controller->createAnnounce();
         break;
+    
+    case 'welcome':
+        $controller = new UserController();
+        $controller->welcome();
+        break;
 
     default:
         echo "Page non trouvée (404)";
