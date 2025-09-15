@@ -65,8 +65,6 @@ class UserController
                     $userCreation = new User();
                     $addUser = $userCreation->createUser($_POST['email'], $_POST['motdepasse'], $_POST['pseudo']);
                     header("Location: index.php?url=welcome");
-                      echo 'You\'ll be redirected in about 5 secs. If not, click <a href="wherever.php">here</a>.';
-
                 }
             }
         }
@@ -76,9 +74,9 @@ class UserController
 
     public function login()
     {
-        if ($_SERVER['REQUEST_METHOD'] == "POST") {
+        $errors = [];
 
-            $errors = [];
+        if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
             if (empty($_POST['email'])) {
                 $errors['email'] = "Veuillez entrer votre E-mail !";
@@ -87,9 +85,35 @@ class UserController
             if (empty($_POST['motdepasse'])) {
                 $errors['motdepasse'] = "Veuillez entrer votre mot de passe !";
             }
+
+
+            if (empty($errors)) {
+
+                if (User::checkMail($_POST["email"])) {
+
+                    $userInfos = new User();
+                    $userInfos->getUserInfosByEmail($_POST["email"]);
+
+                    if (password_verify($_POST["motdepasse"], $userInfos->password)) {
+
+                        // Nous allons créer une variable de session "user" avec les infos du User
+                        $_SESSION["user"]["id"] = $userInfos->id;
+                        $_SESSION["user"]["email"] = $userInfos->email;
+                        $_SESSION["user"]["username"] = $userInfos->username;
+                        $_SESSION["user"]["inscription"] = $userInfos->inscription;
+
+                        // Nous allons ensuite faire une redirection sur une page choisie
+                        header("Location: index.php?url=profil");
+                    } else {
+                        $errors['connexion'] = 'Mail ou Mot de passe incorrect';
+                    }
+                } else {
+                    $errors['connexion'] = 'Mail ou Mot de passe incorrect';
+                }
+            }
         }
 
-        require_once __DIR__ . '/../Views/login.php';
+        require_once __DIR__ . "/../Views/login.php";
     }
 
     public function welcome()
@@ -97,5 +121,12 @@ class UserController
         header("refresh:3; index.php?url=home");
 
         require_once __DIR__ . "/../Views/welcome.php";
+    }
+
+    public function logout()
+    {
+        unset($_SESSION['user']);
+        session_destroy();
+        header('Location: index.php?url=login');
     }
 }

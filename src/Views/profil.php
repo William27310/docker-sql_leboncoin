@@ -42,12 +42,13 @@
         <div class="container mt-5 bg-secondary-subtle p-5 rounded">
             <h1 class="mb-4">Votre profil</h1>
             <div class="row">
-                <p><span class="fw-bold">Nom :</span> Lefebvre</p>
-                <p><span class="fw-bold">Mail :</span> enzo.27@hotmail.com</p>
-                <p><span class="fw-bold">Nom d'utilisateur :</span> zozo</p>
+                <p><span class="fw-bold">Mail :</span> <?= $_SESSION['user']['email'] ?></p>
+                <p><span class="fw-bold">Nom d'utilisateur :</span> <?= $_SESSION['user']['username'] ?></p>
+                <p><span class="fw-bold">Date d'inscription :</span> <?= $_SESSION['user']['inscription'] ?></p>
+
 
                 <div class="col-12 mb-4">
-                    <button type="submit" class="btn border border-dark">Se déconnecter</button>
+                    <a href="index.php?url=logout" class="btn btn-outline-danger">Se déconnecter</a>
                 </div>
 
                 <h4 class="fs-2 mb-3">Mes annonces</h4>

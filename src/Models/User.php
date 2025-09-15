@@ -9,6 +9,13 @@ use PDOException;
 
 class User
 {
+
+    public int $id;
+    public string $email;
+    public string $password;
+    public string $username;
+    public string $inscription;
+
     public function createUser(string $email, string $password, string $username): bool
     {
         try {
@@ -120,9 +127,9 @@ class User
         }
     }
 
-    public static function deleteUser(string $email, string $username, string $password) : bool
+    public static function deleteUser(string $email, string $username, string $password): bool
     {
-                try {
+        try {
             // try → on commence un bloc qui peut générer une exception (ici PDOException).
             $pdo = Database::createInstancePDO();
             // Database::createInstancePDO() → méthode statique qui retourne une instance PDO (connexion à la base).
@@ -132,7 +139,7 @@ class User
                 return false;
             }
 
-                        $sql = 'DELETE FROM `users` (`u_email`, `u_password`, `u_username`) WHERE (:email, :password, :username)';
+            $sql = 'DELETE FROM `users` (`u_email`, `u_password`, `u_username`) WHERE (:email, :password, :username)';
             // Les :email, :password, :username sont des paramètres nommés (placeholders).
             // Les backticks (`) sont des guillemets inversés utilisés dans MySQL pour entourer : Les noms de tables - Les noms de colonnes.
 
@@ -146,6 +153,45 @@ class User
 
 
             return $stmt->execute();
+        } catch (PDOException $e) {
+
+
+            return false;
+        }
+    }
+
+
+    public function getUserInfosByEmail(string $email): bool
+    {
+        try {
+            // Creation d'une instance de connexion à la base de données
+            $pdo = Database::createInstancePDO();
+
+            // test si la connexion est ok
+            if (!$pdo) {
+                // pas de connexion, on return false
+                return false;
+            }
+
+            $sql = 'SELECT * FROM `users` WHERE `u_email` = :email';
+
+            $stmt = $pdo->prepare($sql);
+
+
+
+            $stmt->bindValue(':email', $email);
+
+            $stmt->execute();
+
+            $user = $stmt->fetch(PDO::FETCH_OBJ);
+
+            $this->id = $user->u_id;
+            $this->email = $user->u_email;
+            $this->password = $user->u_password;
+            $this->username = $user->u_username;
+            $this->inscription = $user->u_inscription;
+
+            return true;
         } catch (PDOException $e) {
 
 
