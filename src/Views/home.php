@@ -13,7 +13,36 @@
 
 <body>
 
-<?php require_once __DIR__ . "/../Views/templates/navbar.php" ?>
+    <?php require_once __DIR__ . "/../Views/templates/navbar.php" ?>
+
+    <main>
+
+        <h4 class="fs-2 mb-3">annonces</h4>
+
+        <div class="d-flex justify-content-around">
+            <div class="card" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text">Titre</p>
+                    <p class="card-text">Prix</p>
+                    <p class="card-text">Date de publication</p>
+                    <p class="card-text">Description</p>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text">Titre</p>
+                    <p class="card-text">Prix</p>
+                    <p class="card-text">Date de publication</p>
+                    <p class="card-text">Description</p>
+                </div>
+            </div>
+        </div>
+
+        </div>
+        </div>
+    </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>

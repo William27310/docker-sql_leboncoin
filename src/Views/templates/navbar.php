@@ -15,6 +15,7 @@
         </p>
 
         <div class="d-flex gap-2">
+            <button type="button" class="btn btn-warning text-start"><a href="index.php?url=create" class="text-decoration-none text-white">Annonces</a></button>
             <button type="button" class="btn btn-warning"><a href="index.php?url=create" class="text-decoration-none text-white">Déposer une annonce</a></button>
             <a href="index.php?url=profil" type="button" class="text-decoration-none text-white btn btn-warning d-flex flex-column align-items-center">
                 <span class="material-symbols-outlined">person</span>

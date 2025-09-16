@@ -58,7 +58,14 @@ class AnnonceController
 
             if (empty($errors)) {
                 $adCreation = new Annonce();
-                $addAd = $adCreation->createAnnounce($_POST['titre'], $_POST['description'], $_POST['photo'], (float)$_POST['prix'], $_POST['id']);
+
+                $titre = $_POST['titre'];
+                $description = $_POST['description'];
+                $photo = $_POST['photo'];
+                $prix = (float) str_replace(',', '.', $_POST['prix']); // ✅ conversion ici
+                $id = $_POST['id'];
+
+                $adCreation->createAnnounce($titre, $description, $prix, $photo, $id);
                 header("Location: index.php?url=annonces");
             }
         }
@@ -69,5 +76,6 @@ class AnnonceController
     public function announces()
     {
         require_once __DIR__ . "/../Views/annonces.php";
+    
     }
 }
