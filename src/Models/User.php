@@ -127,40 +127,6 @@ class User
         }
     }
 
-    public static function deleteUser(string $email, string $username, string $password): bool
-    {
-        try {
-            // try → on commence un bloc qui peut générer une exception (ici PDOException).
-            $pdo = Database::createInstancePDO();
-            // Database::createInstancePDO() → méthode statique qui retourne une instance PDO (connexion à la base).
-
-            if (!$pdo) {
-                // Vérifie si la connexion a échoué (si createInstancePDO() a retourné null).
-                return false;
-            }
-
-            $sql = 'DELETE FROM `users` (`u_email`, `u_password`, `u_username`) WHERE (:email, :password, :username)';
-            // Les :email, :password, :username sont des paramètres nommés (placeholders).
-            // Les backticks (`) sont des guillemets inversés utilisés dans MySQL pour entourer : Les noms de tables - Les noms de colonnes.
-
-            $stmt = $pdo->prepare($sql);
-            // prepare → permet d’utiliser des requêtes préparées, sécurisées contre l’injection SQL.
-
-            $stmt->bindValue(':email', $email, PDO::PARAM_STR);
-            $stmt->bindValue(':password', password_hash($password, PASSWORD_DEFAULT), PDO::PARAM_STR);
-            $stmt->bindValue(':username', $username, PDO::PARAM_STR);
-
-
-
-            return $stmt->execute();
-        } catch (PDOException $e) {
-
-
-            return false;
-        }
-    }
-
-
     public function getUserInfosByEmail(string $email): bool
     {
         try {
@@ -192,6 +158,39 @@ class User
             $this->inscription = $user->u_inscription;
 
             return true;
+        } catch (PDOException $e) {
+
+
+            return false;
+        }
+    }
+
+        public static function deleteUser(string $email, string $username, string $password): bool
+    {
+        try {
+            // try → on commence un bloc qui peut générer une exception (ici PDOException).
+            $pdo = Database::createInstancePDO();
+            // Database::createInstancePDO() → méthode statique qui retourne une instance PDO (connexion à la base).
+
+            if (!$pdo) {
+                // Vérifie si la connexion a échoué (si createInstancePDO() a retourné null).
+                return false;
+            }
+
+            $sql = 'DELETE FROM `users` (`u_email`, `u_password`, `u_username`) WHERE (:email, :password, :username)';
+            // Les :email, :password, :username sont des paramètres nommés (placeholders).
+            // Les backticks (`) sont des guillemets inversés utilisés dans MySQL pour entourer : Les noms de tables - Les noms de colonnes.
+
+            $stmt = $pdo->prepare($sql);
+            // prepare → permet d’utiliser des requêtes préparées, sécurisées contre l’injection SQL.
+
+            $stmt->bindValue(':email', $email, PDO::PARAM_STR);
+            $stmt->bindValue(':password', password_hash($password, PASSWORD_DEFAULT), PDO::PARAM_STR);
+            $stmt->bindValue(':username', $username, PDO::PARAM_STR);
+
+
+
+            return $stmt->execute();
         } catch (PDOException $e) {
 
 

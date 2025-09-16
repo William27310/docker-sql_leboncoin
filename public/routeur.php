@@ -32,7 +32,7 @@ switch ($parts[0]) {
         $controller->profil();
         break;
 
-    case 'annonce':
+    case 'create':
         $controller = new AnnonceController();
         $controller->createAnnounce();
         break;
@@ -45,6 +45,11 @@ switch ($parts[0]) {
     case 'logout':
         $objController = new UserController();
         $objController->logout();
+        break;
+
+    case 'annonces':
+        $objController = new AnnonceController();
+        $objController->announces();
         break;
 
     default:

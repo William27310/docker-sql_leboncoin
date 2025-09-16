@@ -17,7 +17,7 @@
 
     <main>
         <div class="container mt-5 bg-dark-subtle p-5 rounded">
-            <form class="row g-3" action="index.php?url=register" method="post" novalidate>
+            <form class="row g-3" action="index.php?url=register" method="post">
                 <h1>Création de compte</h1>
 
                 <!-- nom d'utilisateur -->

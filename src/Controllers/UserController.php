@@ -45,6 +45,8 @@ class UserController
 
             if (empty($_POST['motdepasse2'])) {
                 $errors['motdepasse2'] = "Veuillez confirmer votre mot de passe !";
+            } else if ($_POST['motdepasse2'] !== $_POST['motdepasse']) {
+                $errors['motdepasse2'] = "Les mots de passe ne sont pas identiques";
             }
 
             if (!isset($_POST['cgu'])) {

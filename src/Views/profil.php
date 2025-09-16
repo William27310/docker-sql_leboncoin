@@ -22,7 +22,7 @@
                 <p><span class="fw-bold">Mail :</span> <?= $_SESSION['user']['email'] ?></p>
                 <p><span class="fw-bold">Nom d'utilisateur :</span> <?= $_SESSION['user']['username'] ?></p>
                 <p><span class="fw-bold">Date d'inscription :</span> <?= $_SESSION['user']['inscription'] ?></p>
-
+                <p><span class="fw-bold">Date d'inscription :</span> <?= $_SESSION['user']['id'] ?></p>
 
                 <div class="col-12 mb-4">
                     <a href="index.php?url=logout" class="btn btn-outline-danger">Se déconnecter</a>
