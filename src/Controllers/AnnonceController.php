@@ -47,25 +47,17 @@ class AnnonceController
                 }
             }
 
-
-            if (isset($_POST['id'])) {
-
-                if (empty($_POST['id'])) {
-
-                    $errors['id'] = 'ID nécessaire !';
-                }
-            }
-
             if (empty($errors)) {
                 $adCreation = new Annonce();
 
                 $titre = $_POST['titre'];
                 $description = $_POST['description'];
                 $photo = $_POST['photo'];
-                $prix = (float) str_replace(',', '.', $_POST['prix']); // ✅ conversion ici
-                $id = $_POST['id'];
+                $prix = (float) str_replace(',', '.', $_POST['prix']);
+                $userId = $_SESSION['user']['id']; // 👈 on prend l’ID du compte connecté
 
-                $adCreation->createAnnounce($titre, $description, $prix, $photo, $id);
+                $adCreation->createAnnounce($titre, $description, $prix, $photo, $userId);
+
                 header("Location: index.php?url=annonces");
             }
         }
@@ -76,6 +68,5 @@ class AnnonceController
     public function announces()
     {
         require_once __DIR__ . "/../Views/annonces.php";
-    
     }
 }

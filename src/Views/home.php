@@ -23,19 +23,10 @@
             <div class="card" style="width: 18rem;">
                 <img src="..." class="card-img-top" alt="...">
                 <div class="card-body">
+                    <p class="card-text">Username</p>
                     <p class="card-text">Titre</p>
                     <p class="card-text">Prix</p>
                     <p class="card-text">Date de publication</p>
-                    <p class="card-text">Description</p>
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                    <p class="card-text">Titre</p>
-                    <p class="card-text">Prix</p>
-                    <p class="card-text">Date de publication</p>
-                    <p class="card-text">Description</p>
                 </div>
             </div>
         </div>

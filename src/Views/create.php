@@ -62,14 +62,14 @@
                 </div>
 
                 <!-- ID -->
-                <div class="col-md-6">
+                <!-- <div class="col-md-6">
                     <p class="fst-italic text-secondary">*Obligatoire</p>
                     <div class="d-flex justify-content-between">
                         <label for="inputID" class="form-label">Votre ID</label>
                         <span class="text-danger"><?= $errors['id'] ?? "" ?></span>
                     </div>
                     <input type="text" class="form-control" id="inputID" name="id" value="<?= $_POST['id'] ?? "" ?>">
-                </div>
+                </div> -->
 
                 <div class="col-12">
                     <button type="submit" class="btn border border-dark">Créer l'annonce</button>

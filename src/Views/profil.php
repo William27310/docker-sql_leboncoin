@@ -13,11 +13,11 @@
 
 <body>
 
-<?php require_once __DIR__ . "/../Views/templates/navbar.php" ?>
+    <?php require_once __DIR__ . "/../Views/templates/navbar.php" ?>
 
     <main>
         <div class="container mt-5 bg-secondary-subtle p-5 rounded">
-            <h1 class="mb-4">Votre profil</h1>
+            <h1 class="mb-5 mt-5">Votre profil</h1>
             <div class="row">
                 <p><span class="fw-bold">Mail :</span> <?= $_SESSION['user']['email'] ?></p>
                 <p><span class="fw-bold">Nom d'utilisateur :</span> <?= $_SESSION['user']['username'] ?></p>
@@ -28,30 +28,28 @@
                     <a href="index.php?url=logout" class="btn btn-outline-danger">Se déconnecter</a>
                 </div>
 
-                <h4 class="fs-2 mb-3">Mes annonces</h4>
+                <h4 class="fs-2 mb-5 mt-5">Mes annonces</h4>
 
-                <div class="d-flex justify-content-around">
-                    <div class="card" style="width: 18rem;">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <p class="card-text">Titre</p>
-                            <p class="card-text">Prix</p>
-                            <p class="card-text">Date de publication</p>
-                            <p class="card-text">Description</p>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 18rem;">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <p class="card-text">Titre</p>
-                            <p class="card-text">Prix</p>
-                            <p class="card-text">Date de publication</p>
-                            <p class="card-text">Description</p>
-                        </div>
-                    </div>
-                </div>
+                <div class="d-flex justify-content-around flex-wrap">
 
-            </div>
+                    <?php if (!empty($annonces)) : ?>
+                        <?php foreach ($annonces as $annonce) : ?>
+
+                            <div class="card mb-4" style="width: 18rem;">
+                                <img src="..." class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <p class="card-text"> <?= ($annonce['a_title']) ?></p>
+                                    <p class="card-text"> <?= ($annonce['a_price']) ?></p>
+                                    <p class="card-text"> <?= ($annonce['a_publication']) ?></p>
+                                    <p class="card-text"> <?= ($annonce['a_description']) ?></p>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php else : ?>
+                        <p>Aucune annonce trouvée.</p>
+                    <?php endif; ?>
+
+              </div>
         </div>
     </main>
 

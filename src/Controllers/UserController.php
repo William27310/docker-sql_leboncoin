@@ -2,17 +2,25 @@
 
 namespace App\Controllers;
 
+use App\Models\Annonce;
 use App\Models\User;
 
 class UserController
 {
-    public function profil()
-    {
-        if (!isset($_SESSION['user'])){
-            header("Location: index.php?url=login");
-        }
-        require_once __DIR__ . '/../Views/profil.php';
+public function profil()
+{
+    if (!isset($_SESSION['user'])) {
+        header("Location: index.php?url=login");
+        exit;
     }
+
+    $userId = $_SESSION['user']['id'];
+    $annonces = Annonce::getByUserId($userId);
+
+    // ✅ On envoie les annonces à la vue
+    require_once __DIR__ . '/../Views/profil.php';
+}
+
 
     public function register()
     {
@@ -49,7 +57,7 @@ class UserController
                 $errors['motdepasse2'] = "Les mots de passe ne sont pas identiques";
             }
 
-            if (!isset($_POST['cgu'])) {
+            if (empty($_POST['cgu'])) {
                 $errors['cgu'] = 'Veuillez valider les CGU !';
             }
 

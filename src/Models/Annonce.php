@@ -45,6 +45,31 @@ class Annonce
         }
     }
 
+    public static function getByUserId($userId)
+    {
+        try {
+            // Connexion à la base de données
+            $pdo = Database::createInstancePDO();
+
+            if (!$pdo) {
+                return []; // On retourne un tableau vide si la connexion échoue
+            }
+
+            // Requête pour récupérer toutes les annonces de l'utilisateur
+            $sql = 'SELECT * FROM annonces WHERE u_id = :userId ORDER BY a_publication';
+
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindValue(':userId', $userId, \PDO::PARAM_INT);
+            $stmt->execute();
+
+            // Retourne toutes les annonces sous forme de tableau associatif
+            return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        } catch (\PDOException $e) {
+            // Tu peux logger l'erreur ici si besoin
+            return []; // En cas d’erreur, on retourne un tableau vide
+        }
+    }
+
     // public static function checkTitle(string $title): bool
     // {
     //     try {
