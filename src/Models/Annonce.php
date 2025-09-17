@@ -94,6 +94,33 @@ class Annonce
         }
     }
 
+    public function getAdByUser($u_id)
+    {
+        try {
+            // Connexion à la base de données
+            $pdo = Database::createInstancePDO();
+
+            if (!$pdo) {
+                return []; // On retourne un tableau vide si la connexion échoue
+            }
+
+            $sql = "SELECT a_picture, a_title, a_price, a_publication, users.u_username
+            FROM annonces
+            JOIN users ON annonces.u_id = users.u_id
+            WHERE users.u_id = :u_id
+            ORDER BY a_publication DESC;";
+
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindValue(':u_id', $u_id, PDO::PARAM_INT); // 👈 avec le type (optionnel mais recommandé)
+            $stmt->execute();
+
+            $ad = $stmt->fetchAll();
+        } catch (\PDOException $e) {
+            // Tu peux logger l'erreur ici si besoin
+            return []; // En cas d’erreur, on retourne un tableau vide
+        }
+    }
+
 
 
     // public static function checkTitle(string $title): bool
