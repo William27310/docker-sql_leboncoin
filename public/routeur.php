@@ -52,6 +52,19 @@ switch ($parts[0]) {
         $objController->announces();
         break;
 
+    case "delete":
+
+        if (isset($_GET['a_id']) && is_numeric($_GET['a_id'])) {
+            $a_id = (int) $_GET['a_id'];
+            // Tu peux utiliser $a_id ici
+            $objController = new AnnonceController();
+            $objController->deleteAnnounce($a_id);
+            header("Location: index.php?url=profil");
+        } else {
+            echo "Paramètre manquant ou invalide.";
+        }
+        break;
+
     default:
         echo "Page non trouvée (404)";
         break;

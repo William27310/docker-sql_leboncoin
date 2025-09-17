@@ -57,7 +57,7 @@ public function profil()
                 $errors['motdepasse2'] = "Les mots de passe ne sont pas identiques";
             }
 
-            if (empty($_POST['cgu'])) {
+            if (!isset($_POST['cgu'])) {
                 $errors['cgu'] = 'Veuillez valider les CGU !';
             }
 
@@ -131,7 +131,7 @@ public function profil()
 
     public function welcome()
     {
-        header("refresh:3; index.php?url=home");
+        header("refresh:3; index.php?url=login");
 
         require_once __DIR__ . "/../Views/welcome.php";
     }

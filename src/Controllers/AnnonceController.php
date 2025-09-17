@@ -58,7 +58,7 @@ class AnnonceController
 
                 $adCreation->createAnnounce($titre, $description, $prix, $photo, $userId);
 
-                header("Location: index.php?url=annonces");
+                header("Location: index.php?url=profil");
             }
         }
 
@@ -68,5 +68,12 @@ class AnnonceController
     public function announces()
     {
         require_once __DIR__ . "/../Views/annonces.php";
+    }
+
+    public function deleteAnnounce($a_id)
+    {
+        $adDelete = new Annonce();
+        $adDelete->deleteById($a_id);
+
     }
 }

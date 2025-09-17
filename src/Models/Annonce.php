@@ -45,6 +45,30 @@ class Annonce
         }
     }
 
+    public function deleteById($a_id)
+    {
+        try {
+
+            $pdo = Database::createInstancePDO();
+
+            if (!$pdo) {
+
+                return false;
+            }
+
+            $sql = 'DELETE FROM annonces WHERE a_id = :a_id';
+
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindValue(':a_id', $a_id);
+
+            return $stmt->execute();
+        } catch (PDOException $e) {
+
+
+            return false;
+        }
+    }
+
     public static function getByUserId($userId)
     {
         try {
@@ -69,6 +93,8 @@ class Annonce
             return []; // En cas d’erreur, on retourne un tableau vide
         }
     }
+
+
 
     // public static function checkTitle(string $title): bool
     // {
