@@ -36,7 +36,7 @@
                         <?php foreach ($annonces as $annonce) : ?>
 
                             <div class="card mb-4" style="width: 18rem;">
-                                <img src="..." class="card-img-top" alt="...">
+                                <img src="/uploads/<?= ($annonce['a_picture'])?>" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <p class="card-text"> <?= ($annonce['a_title']) ?></p>
                                     <p class="card-text"> <?= ($annonce['a_price']) ?></p>

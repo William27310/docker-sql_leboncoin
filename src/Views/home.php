@@ -18,22 +18,23 @@
     <main>
 
         <h4 class="fs-2 mb-3">annonces</h4>
-        <?php foreach ($ad as $ads): ?>
+        <div class="container d-flex justify-content-around flex-wrap mt-5">
 
-            <div class="d-flex justify-content-around">
-                <div class="card" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text">Username</p>
-                        <p class="card-text">Titre</p>
-                        <p class="card-text">Prix</p>
-                        <p class="card-text">Date de publication</p>
+            <?php if (!empty($toutesLesAnnonces)) : ?>
+                <?php foreach ($toutesLesAnnonces as $annonce) : ?>
+
+                    <div class="card mb-4" style="width: 18rem;">
+                        <img src="/uploads/<?= ($annonce['a_picture']) ?>" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <p class="card-text"> <?= ($annonce['a_title']) ?></p>
+                            <p class="card-text"> <?= ($annonce['a_price']) ?></p>
+                            <p class="card-text"> <?= ($annonce['a_publication']) ?></p>
+                        </div>
                     </div>
-                </div>
-            </div>
-        <?php endforeach; ?>
-
-        </div>
+                <?php endforeach; ?>
+            <?php else : ?>
+                <p>Aucune annonce trouvée.</p>
+            <?php endif; ?>
         </div>
     </main>
 

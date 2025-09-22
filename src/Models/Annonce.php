@@ -94,8 +94,27 @@ class Annonce
         }
     }
 
-    public function getAdByUser($u_id)
+    public function uploadImage($picture)
     {
+        try {
+            $pdo = Database::createInstancePDO();
+
+            if (!$pdo) {
+                return [];
+            }
+
+            $sql = "INSERT INTO annonces (a_picture) VALUES (:picture)";
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindValue(':picture', $picture);
+            $stmt->execute();
+
+        } catch (\PDOException $e) {
+            return [];
+        }
+    }
+
+        public function findAll() : array
+        {
         try {
             // Connexion à la base de données
             $pdo = Database::createInstancePDO();
@@ -104,24 +123,19 @@ class Annonce
                 return []; // On retourne un tableau vide si la connexion échoue
             }
 
-            $sql = "SELECT a_picture, a_title, a_price, a_publication, users.u_username
-            FROM annonces
-            JOIN users ON annonces.u_id = users.u_id
-            WHERE users.u_id = :u_id
-            ORDER BY a_publication DESC;";
+            // Requête pour récupérer toutes les annonces de l'utilisateur
+            $sql = 'SELECT a_title, a_description, a_price, a_picture, a_publication, users.u_username FROM annonces LEFT JOIN users ON annonces.u_id = users.u_id';
 
             $stmt = $pdo->prepare($sql);
-            $stmt->bindValue(':u_id', $u_id, PDO::PARAM_INT); // 👈 avec le type (optionnel mais recommandé)
-            $stmt->execute();
 
-            $ad = $stmt->fetchAll();
+            $stmt->execute();
+            
+            return $stmt->fetchAll(\PDO::FETCH_ASSOC);
         } catch (\PDOException $e) {
             // Tu peux logger l'erreur ici si besoin
             return []; // En cas d’erreur, on retourne un tableau vide
         }
     }
-
-
 
     // public static function checkTitle(string $title): bool
     // {

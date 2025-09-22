@@ -17,7 +17,7 @@
 
     <main>
         <div class="container w-25 mt-5 bg-dark-subtle p-5 rounded">
-            <form class="row g-3" action="index.php?url=create" method="post">
+            <form class="row g-3" action="index.php?url=create" method="post" enctype="multipart/form-data">
                 <h1>Création d'annonce</h1>
 
                 <!-- Titre -->
@@ -41,14 +41,14 @@
                 </div>
 
 
-                <!-- Photo -->
+                <!-- Image -->
                 <div class="col-md-12">
                     <p class="fst-italic text-secondary">*Obligatoire</p>
                     <div class="d-flex justify-content-between">
-                        <label for="inputPhoto" class="form-label">Photo</label>
+                        <label for="image" class="form-label">Image</label>
                         <span class="text-danger"><?= $errors['photo'] ?? "" ?></span>
                     </div>
-                    <input type="text" class="form-control" id="inputPhoto" name="photo" value="<?= $_POST['photo'] ?? "" ?>">
+                    <input type="file" class="form-control" id="image" name="photo">
                 </div>
 
                 <!-- Prix -->

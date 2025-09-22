@@ -31,13 +31,35 @@ class AnnonceController
                 }
             }
 
-            if (isset($_POST['photo'])) {
+            if (!empty($_FILES['photo']) && isset($_FILES['photo']['error']) && $_FILES['photo']['error'] === UPLOAD_ERR_OK) {
+                $fileTmpPath = $_FILES['photo']['tmp_name'];
+                $fileName = $_FILES['photo']['name'];
+                $fileSize = $_FILES['photo']['size'];
+                $fileType = $_FILES['photo']['type'];
 
-                if (empty($_POST['photo'])) {
+                $fileExtension = pathinfo($fileName, PATHINFO_EXTENSION);
+                $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
 
-                    $errors['photo'] = 'Photo obligatoire !';
+                if (in_array(strtolower($fileExtension), $allowedExtensions)) {
+                    $newFileName = uniqid('img_') . '.' . $fileExtension;
+                    $uploadDir = 'uploads/'; // <-- à adapter selon ton projet
+                    $destPath = $uploadDir . $newFileName;
+
+                    if (move_uploaded_file($fileTmpPath, $destPath)) {
+                        // 🔗 Appelle ton modèle ici pour enregistrer le chemin dans la base
+                        $imagePath = $destPath;
+                        $annonce = new Annonce();
+                        $annonce->uploadImage($imagePath);
+                    } else {
+                        $errors['photo'] = "Erreur lors du déplacement du fichier.";
+                    }
+                } else {
+                    $errors['photo'] = "Format de fichier non autorisé.";
                 }
+            } else {
+                $defaultPicture = "nophoto.png";
             }
+
 
             if (isset($_POST['prix'])) {
 
@@ -52,7 +74,7 @@ class AnnonceController
 
                 $titre = $_POST['titre'];
                 $description = $_POST['description'];
-                $photo = $_POST['photo'];
+                $photo = $defaultPicture ?? $newFileName;
                 $prix = (float) str_replace(',', '.', $_POST['prix']);
                 $userId = $_SESSION['user']['id']; // 👈 on prend l’ID du compte connecté
 
@@ -74,6 +96,5 @@ class AnnonceController
     {
         $adDelete = new Annonce();
         $adDelete->deleteById($a_id);
-
     }
 }
