@@ -27,6 +27,8 @@
                     <p class="card-text"><span class="fw-bold">Date de publication : </p>
                     <p class="card-text"><span class="fw-bold">Description : </span> </p>
                     <a class="btn btn-outline-dark">Supprimer</a>
+                    <a class="btn btn-outline-dark" href="index.php?url=home">Retour</a>
+
                 </div>
             </div>
 
