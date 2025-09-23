@@ -97,4 +97,11 @@ class AnnonceController
         $adDelete = new Annonce();
         $adDelete->deleteById($a_id);
     }
+
+    public function show($a_id)
+    {
+        $Getdetails = new Annonce();
+        $touslesDetails = $Getdetails->findById($a_id);
+        require_once __DIR__ . '/../Views/details.php';
+    }
 }

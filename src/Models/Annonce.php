@@ -107,14 +107,13 @@ class Annonce
             $stmt = $pdo->prepare($sql);
             $stmt->bindValue(':picture', $picture);
             $stmt->execute();
-
         } catch (\PDOException $e) {
             return [];
         }
     }
 
-        public function findAll() : array
-        {
+    public function findAll(): array
+    {
         try {
             // Connexion à la base de données
             $pdo = Database::createInstancePDO();
@@ -124,12 +123,12 @@ class Annonce
             }
 
             // Requête pour récupérer toutes les annonces de l'utilisateur
-            $sql = 'SELECT a_title, a_description, a_price, a_picture, a_publication, users.u_username FROM annonces LEFT JOIN users ON annonces.u_id = users.u_id';
+            $sql = 'SELECT a_id, a_title, a_description, a_price, a_picture, a_publication, users.u_username FROM annonces LEFT JOIN users ON annonces.u_id = users.u_id';
 
             $stmt = $pdo->prepare($sql);
 
             $stmt->execute();
-            
+
             return $stmt->fetchAll(\PDO::FETCH_ASSOC);
         } catch (\PDOException $e) {
             // Tu peux logger l'erreur ici si besoin
@@ -172,9 +171,9 @@ class Annonce
 
     // public function findAll() {}
 
-    public function findById(int $u_id) 
+    public function findById(int $a_id)
     {
-                try {
+        try {
 
             $pdo = Database::createInstancePDO();
 
@@ -183,12 +182,13 @@ class Annonce
                 return false;
             }
 
-            $sql = 'SELECT * FROM `annonces` WHERE u_id = u_id';
+            $sql = 'SELECT * FROM `annonces` WHERE a_id = :a_id';
 
             $stmt = $pdo->prepare($sql);
-            $stmt->bindValue(':u_id', $u_id);
+            $stmt->bindValue(':a_id', $a_id);
+            $stmt->execute();
 
-            return $stmt->execute();
+            return $stmt->fetch(\PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
 
 

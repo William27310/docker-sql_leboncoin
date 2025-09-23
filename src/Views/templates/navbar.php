@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=person" />
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 
 <body>
@@ -29,12 +29,12 @@
 
     <nav class="bg-warning p-2">
         <div class="d-flex justify-content-around">
-            <button type="button" class="btn bouton"><a class="text-decoration-none text-white" href="index.php?url=register">S'inscrire</a></button>
+            <button type="button" class="btn btn-outline-light"><a class="text-decoration-none text-white" href="index.php?url=register">S'inscrire</a></button>
             <form class="d-flex" role="search">
                 <input class="form-control me-2" type="search" aria-label="Search" />
-                <button class="btn bouton text-white" type="submit">Rechercher</button>
+                <button class="btn btn-outline-light text-white" type="submit">Rechercher</button>
             </form>
-            <button type="button" class="btn bouton"><a class="text-decoration-none text-white" href="index.php?url=login">Se connecter</a></button>
+            <button type="button" class=" btn btn-outline-light"><a class="text-decoration-none text-white" href="index.php?url=login">Se connecter</a></button>
         </div>
     </nav>
 

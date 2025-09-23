@@ -53,8 +53,13 @@ switch ($parts[0]) {
         break;
 
     case 'details':
-        $objController = new HomeController();
-        $objController->details();
+        if (isset($_GET['a_id']) && is_numeric($_GET['a_id'])) {
+            $a_id = (int) $_GET['a_id'];
+            $objController = new AnnonceController();
+            $objController->show($a_id);
+        } else {
+            echo "Paramètre Invalide ou manquant.";
+        }
         break;
 
     case "delete":
