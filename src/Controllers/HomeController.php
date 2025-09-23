@@ -20,7 +20,8 @@ class HomeController
 
     public function details()
     {
-
+        // $Getdetails = new Annonce();
+        // $touslesDetails = $Getdetails->findById(int $u_id);
         require_once __DIR__ . '/../Views/details.php';
     }
 }
