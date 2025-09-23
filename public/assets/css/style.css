@@ -10,3 +10,8 @@
 .bouton {
     background-color: orange;
 }
+
+.annonces {
+    background: #ffcf82;
+    background: linear-gradient(90deg, rgba(255, 207, 130, 1) 0%, rgba(255, 207, 130, 1) 100%);
+}

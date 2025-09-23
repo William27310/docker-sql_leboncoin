@@ -38,10 +38,10 @@
                             <div class="card mb-4" style="width: 18rem;">
                                 <img src="/uploads/<?= ($annonce['a_picture'])?>" class="card-img-top" alt="...">
                                 <div class="card-body">
-                                    <p class="card-text"> <?= ($annonce['a_title']) ?></p>
-                                    <p class="card-text"> <?= ($annonce['a_price']) ?></p>
-                                    <p class="card-text"> <?= ($annonce['a_publication']) ?></p>
-                                    <p class="card-text"> <?= ($annonce['a_description']) ?></p>
+                                    <p class="card-text"><span class="fw-bold">Titre : </span> <?= ($annonce['a_title']) ?></p>
+                                    <p class="card-text"><span class="fw-bold">Prix : </span> <?= ($annonce['a_price']) ?></p>
+                                    <p class="card-text"><span class="fw-bold">Date de publication : </span> <?= ($annonce['a_publication']) ?></p>
+                                    <p class="card-text"><span class="fw-bold">Description : </span> <?= ($annonce['a_description']) ?></p>
                                     <a class="btn btn-outline-dark" href="index.php?url=delete&a_id=<?=($annonce['a_id'])?>">Supprimer</a>
                                 </div>
                             </div>

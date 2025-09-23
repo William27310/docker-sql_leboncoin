@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=person" />
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="/public/assets/css/style.css">
 </head>
 
 <body>
@@ -17,24 +17,31 @@
 
     <main>
 
-        <h4 class="fs-2 mb-3">annonces</h4>
-        <div class="container d-flex justify-content-around flex-wrap mt-5">
+        <h4 class="fs-2 mb-5 mt-5 text-center">- Annonces -</h4>
 
-            <?php if (!empty($toutesLesAnnonces)) : ?>
-                <?php foreach ($toutesLesAnnonces as $annonce) : ?>
+        <div class="annonces bg-warning-subtle container mb-5">
 
-                    <div class="card mb-4" style="width: 18rem;">
-                        <img src="/uploads/<?= ($annonce['a_picture']) ?>" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <p class="card-text"> <?= ($annonce['a_title']) ?></p>
-                            <p class="card-text"> <?= ($annonce['a_price']) ?></p>
-                            <p class="card-text"> <?= ($annonce['a_publication']) ?></p>
+            <div class="container d-flex justify-content-around flex-wrap mt-5">
+
+                <?php if (!empty($toutesLesAnnonces)) : ?>
+                    <?php foreach ($toutesLesAnnonces as $annonce) : ?>
+
+                        <div class="card mb-4 mt-5" style="width: 18rem;">
+                            <img src="/uploads/<?= ($annonce['a_picture']) ?>" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <p class="card-text"><span class="fw-bold">Nom d'utilisateur : </span> <?= ($annonce['u_username']) ?></p>
+                                <p class="card-text"><span class="fw-bold">Titre : </span> <?= ($annonce['a_title']) ?></p>
+                                <p class="card-text"><span class="fw-bold">Prix : </span> <?= ($annonce['a_price']) ?></p>
+                                <p class="card-text"><span class="fw-bold">Date de publication : </span> <?= ($annonce['a_publication']) ?></p>
+                                <a class="btn btn-outline-dark" href="index.php?url=details">Détails</a>
+                            </div>
                         </div>
-                    </div>
-                <?php endforeach; ?>
-            <?php else : ?>
-                <p>Aucune annonce trouvée.</p>
-            <?php endif; ?>
+                    <?php endforeach; ?>
+                <?php else : ?>
+                    <p>Aucune annonce trouvée.</p>
+                <?php endif; ?>
+            </div>
+
         </div>
     </main>
 

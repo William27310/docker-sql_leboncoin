@@ -172,7 +172,29 @@ class Annonce
 
     // public function findAll() {}
 
-    // public function findById(int $id) {}
+    public function findById(int $u_id) 
+    {
+                try {
+
+            $pdo = Database::createInstancePDO();
+
+            if (!$pdo) {
+
+                return false;
+            }
+
+            $sql = 'SELECT * FROM `annonces` WHERE u_id = u_id';
+
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindValue(':u_id', $u_id);
+
+            return $stmt->execute();
+        } catch (PDOException $e) {
+
+
+            return false;
+        }
+    }
 
     // public function findByUser(int $userId) {}
 

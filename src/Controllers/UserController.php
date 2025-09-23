@@ -21,7 +21,6 @@ public function profil()
     require_once __DIR__ . '/../Views/profil.php';
 }
 
-
     public function register()
     {
         $regPseudo = "/^[a-zA-Z0-9]([a-zA-Z0-9-_]{1,18})[a-zA-Z0-9]$/";

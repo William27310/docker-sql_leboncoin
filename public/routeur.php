@@ -52,6 +52,11 @@ switch ($parts[0]) {
         $objController->announces();
         break;
 
+    case 'details':
+        $objController = new HomeController();
+        $objController->details();
+        break;
+
     case "delete":
 
         if (isset($_GET['a_id']) && is_numeric($_GET['a_id'])) {
