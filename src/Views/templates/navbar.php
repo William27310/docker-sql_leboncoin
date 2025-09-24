@@ -19,22 +19,22 @@
         </p>
 
         <div class="d-flex gap-2">
-            <button type="button" class="btn btn-warning"><a href="index.php?url=create" class="text-decoration-none text-white">Déposer une annonce</a></button>
-            <a href="index.php?url=profil" type="button" class="text-decoration-none text-white btn btn-warning d-flex flex-column align-items-center">
+            <button type="button" class="btn btn-outline-light"><a href="index.php?url=create" class="text-decoration-none text-white">Déposer une annonce</a></button>
+            <a href="index.php?url=profil" type="button" class="text-decoration-none text-white btn btn-outline-light d-flex flex-column align-items-center">
                 <span class="material-symbols-outlined">person</span>
-                <small>Profil</small>
+                <?= (isset($_SESSION['user']['username']) ? '<small> '.$_SESSION["user"]["username"] . '</small>' : '<small> Profil </small>') ?>
             </a>
         </div>
     </nav>
 
     <nav class="bg-warning p-2">
         <div class="d-flex justify-content-around">
-            <button type="button" class="btn btn-outline-light"><a class="text-decoration-none text-white" href="index.php?url=register">S'inscrire</a></button>
+            <?= (isset($_SESSION['user']) ? '' : '<button type="button" class=" btn btn-outline-light"><a class="text-decoration-none text-white" href="index.php?url=register"> S\'inscrire </a></button>') ?>
             <form class="d-flex" role="search">
                 <input class="form-control me-2" type="search" aria-label="Search" />
                 <button class="btn btn-outline-light text-white" type="submit">Rechercher</button>
             </form>
-            <button type="button" class=" btn btn-outline-light"><a class="text-decoration-none text-white" href="index.php?url=login">Se connecter</a></button>
+            <?= (isset($_SESSION['user']) ? '<a class="text-decoration-none text-white btn btn-outline-light" href="index.php?url=logout"> Se déconnecter </a>' : '<button type="button" class=" btn btn-outline-light"><a class="text-decoration-none text-white" href="index.php?url=login"> Se connecter </a></button>') ?>
         </div>
     </nav>
 

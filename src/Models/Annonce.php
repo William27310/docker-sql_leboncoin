@@ -45,6 +45,33 @@ class Annonce
         }
     }
 
+    public function modifyAnnounce(string $title, string $description, float $price, ?string $picture): bool
+    {
+        try {
+
+            $pdo = Database::createInstancePDO();
+
+            if (!$pdo) {
+
+                return false;
+            }
+
+            $sql = 'UPDATE annonces SET a_title = :title, a_description = :description", a_price = :price, a_picture = :picture WHERE a_id = :id';
+
+            $stmt = $pdo->prepare($sql);
+
+            $stmt->bindValue(':title', $title);
+            $stmt->bindValue(':description', $description);
+            $stmt->bindValue(':price', $price);
+            $stmt->bindValue(':picture', $picture);
+
+            return $stmt->execute();
+        } catch (PDOException $e) {
+
+            return false;
+        }
+    }
+
     public function deleteById($a_id)
     {
         try {

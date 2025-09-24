@@ -21,7 +21,7 @@
 
         <div class="annonces bg-warning-subtle container mb-5">
 
-            <div class="container d-flex justify-content-around flex-wrap mt-5">
+            <div class="d-flex justify-content-around flex-wrap mt-5">
 
                 <?php if (!empty($toutesLesAnnonces)) : ?>
                     <?php foreach ($toutesLesAnnonces as $annonce) : ?>

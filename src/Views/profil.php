@@ -36,13 +36,37 @@
                         <?php foreach ($annonces as $annonce) : ?>
 
                             <div class="card mb-4" style="width: 18rem;">
-                                <img src="/uploads/<?= ($annonce['a_picture'])?>" class="card-img-top w-100 h-100 object-fit-contain p-2" alt="...">
+                                <img src="/uploads/<?= ($annonce['a_picture']) ?>" class="card-img-top w-100 h-100 object-fit-contain p-2" alt="...">
                                 <div class="card-body">
                                     <p class="card-text"><span class="fw-bold">Titre : </span> <?= ($annonce['a_title']) ?></p>
                                     <p class="card-text"><span class="fw-bold">Prix : </span> <?= ($annonce['a_price']) ?></p>
                                     <p class="card-text"><span class="fw-bold">Date de publication : </span> <?= ($annonce['a_publication']) ?></p>
                                     <p class="card-text"><span class="fw-bold">Description : </span> <?= ($annonce['a_description']) ?></p>
-                                    <a class="btn btn-outline-dark" href="index.php?url=delete&a_id=<?=($annonce['a_id'])?>">Supprimer</a>
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#modalId<?= ($annonce['a_id'])?>">
+                                        Supprimer
+                                    </button>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="modalId<?= ($annonce['a_id'])?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Confirmation</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Êtes-vous sûr de vouloir supprimer cette annonce ?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Fermer</button>
+                                                    <a class="btn btn-outline-dark" href="index.php?url=delete&a_id=<?= ($annonce['a_id']) ?>">Supprimer</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
                                 </div>
                             </div>
                         <?php endforeach; ?>
