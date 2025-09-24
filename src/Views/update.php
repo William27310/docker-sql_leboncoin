@@ -17,28 +17,37 @@
 
     <main>
 
-        <div class="d-flex justify-content-around flex-wrap">
+        <form class="row g-3 d-flex justify-content-center mt-5" action="index.php?url=register" method="post">
 
             <div class="card mt-5 mb-5 w-50" style="width: 18rem;">
                 <div class="d-flex justify-content-center mt-5 mb-5">
-                    <img src="/uploads/<?= $touslesDetails['a_picture'] ?>" class="card-img-top w-50 object-fit-contain p-2" alt="...">
+                    <img src="/uploads/<?= $detailsAnnonce['a_picture'] ?>" class="card-img-top w-50 object-fit-contain p-2" alt="...">
                 </div>
                 <div class="card-body">
-                    <p class="card-text"><span class="fw-bold">Titre : </span><?= $touslesDetails['a_title'] ?> </p>
-                    <p class="card-text"><span class="fw-bold">Prix : </span><?= $touslesDetails['a_price'] ?> </p>
-                    <p class="card-text"><span class="fw-bold">Date de publication : </span><?= $touslesDetails['a_publication'] ?> </p>
-                    <p class="card-text"><span class="fw-bold">Description : </span><?= $touslesDetails['a_description'] ?> </p>
-                    <div class="d-flex justify-content-between mt-5">
-                        <div>
-                            <a class="btn btn-outline-dark">Supprimer</a>
-                            <a class="btn btn-outline-dark" href="index.php?url=update&a_id=<?= $touslesDetails['a_id'] ?>">Modifier</a>
-                        </div>
-                        <a class="btn btn-outline-dark" href="index.php?url=home">Retour</a>
+                    <span class="fw-bold">Titre : </span>
+                    <input value="<?= $detailsAnnonce['a_title'] ?>">
+                </div>
+
+                <div class="card-body">
+                    <span class="fw-bold">Prix : </span>
+                    <input value="<?= $detailsAnnonce['a_price'] ?>">
+                </div>
+
+
+                <div class="card-body">
+                    <span class="fw-bold">Description : </span>
+                    <input value="<?= $detailsAnnonce['a_description'] ?>">
+                </div>
+
+                <div class="d-flex justify-content-between mt-5">
+                    <div>
+                        <a class="btn btn-outline-dark">Enregistrer</a>
                     </div>
+                    <a class="btn btn-outline-dark" href="index.php?url=home">Annuler</a>
                 </div>
             </div>
+            </div>
 
-        </div>
 
     </main>
 

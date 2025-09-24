@@ -92,6 +92,13 @@ class AnnonceController
         require_once __DIR__ . "/../Views/annonces.php";
     }
 
+    public function updateAnnounce($a_id)
+    {
+        $adModify = new Annonce();
+        $detailsAnnonce = $adModify->findById($a_id);
+        require_once __DIR__ . '/../Views/update.php';
+    }
+
     public function deleteAnnounce($a_id)
     {
         $adDelete = new Annonce();

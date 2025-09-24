@@ -52,6 +52,16 @@ switch ($parts[0]) {
         $objController->announces();
         break;
 
+    case 'update':
+        if (isset($_GET['a_id']) && is_numeric($_GET['a_id'])) {
+            $a_id = (int) $_GET['a_id'];
+            $objController = new AnnonceController();
+            $objController->updateAnnounce($a_id);
+        } else {
+            echo "Paramètre Invalide ou manquant.";
+        }
+        break;
+
     case 'details':
         if (isset($_GET['a_id']) && is_numeric($_GET['a_id'])) {
             $a_id = (int) $_GET['a_id'];

@@ -45,32 +45,33 @@ class Annonce
         }
     }
 
-    public function modifyAnnounce(string $title, string $description, float $price, ?string $picture): bool
-    {
-        try {
+    // public function modifyAnnounce(string $title, string $description, float $price, ?string $picture, int $id): bool
+    // {
+    //     try {
 
-            $pdo = Database::createInstancePDO();
+    //         $pdo = Database::createInstancePDO();
 
-            if (!$pdo) {
+    //         if (!$pdo) {
 
-                return false;
-            }
+    //             return false;
+    //         }
 
-            $sql = 'UPDATE annonces SET a_title = :title, a_description = :description", a_price = :price, a_picture = :picture WHERE a_id = :id';
+    //         $sql = 'UPDATE annonces SET a_title = :title, a_description = :description, a_price = :price, a_picture = :picture WHERE a_id = :id';
 
-            $stmt = $pdo->prepare($sql);
+    //         $stmt = $pdo->prepare($sql);
 
-            $stmt->bindValue(':title', $title);
-            $stmt->bindValue(':description', $description);
-            $stmt->bindValue(':price', $price);
-            $stmt->bindValue(':picture', $picture);
+    //         $stmt->bindValue(':title', $title);
+    //         $stmt->bindValue(':description', $description);
+    //         $stmt->bindValue(':price', $price);
+    //         $stmt->bindValue(':picture', $picture);
+    //         $stmt->bindValue(':id', $id, PDO::PARAM_INPUT_OUTPUT);
 
-            return $stmt->execute();
-        } catch (PDOException $e) {
+    //         return $stmt->execute();
+    //     } catch (PDOException $e) {
 
-            return false;
-        }
-    }
+    //         return false;
+    //     }
+    // }
 
     public function deleteById($a_id)
     {
